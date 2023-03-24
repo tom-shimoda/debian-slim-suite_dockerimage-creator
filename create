@@ -1,0 +1,5 @@
+#!/usr/bin/zsh
+set -e
+
+docker image build -t debian-slim-suite-presetup .
+docker run -it debian-slim-suite-presetup
