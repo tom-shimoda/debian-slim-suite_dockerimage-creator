@@ -8,8 +8,8 @@ echo "### Change default shell to zsh"
 chsh -s /usr/bin/zsh
 
 # apt update
-echo "### apt update"
-apt update
+echo "### sudo apt update"
+sudo apt update
 
 # create folder
 echo "### create folder"
@@ -20,18 +20,18 @@ mkdir -p ~/.config/nvim
 
 # wget
 echo "### wget"
-apt install -y --no-install-recommends wget
+sudo apt install -y --no-install-recommends wget
 # curl
 echo "### curl"
-apt install -y --no-install-recommends curl
-apt install -y --no-install-recommends ca-certificates
+sudo apt install -y --no-install-recommends curl
+sudo apt install -y --no-install-recommends ca-certificates
 update-ca-certificates
 # dpkg
 echo "### dpkg"
-apt install -y --no-install-recommends dpkg
+sudo apt install -y --no-install-recommends dpkg
 # git
 echo "### git"
-apt install -y --no-install-recommends git
+sudo apt install -y --no-install-recommends git
 
 # dotfiles
 echo "### dotfiles"
@@ -62,15 +62,15 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
 # pyenv (for Ubuntu/Debian/Mint : https://github.com/pyenv/pyenv/wiki )
 # echo "### pyenv"
-# apt install -y --no-install-recommends build-essential libssl-dev zlib1g-dev \
+# sudo apt install -y --no-install-recommends build-essential libssl-dev zlib1g-dev \
 # libbz2-dev libreadline-dev libsqlite3-dev \
 # libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 # curl https://pyenv.run | bash
 
 # python
 echo "### pthon"
-apt install -y --no-install-recommends python3
-apt install -y --no-install-recommends python3-pip
+sudo apt install -y --no-install-recommends python3
+sudo apt install -y --no-install-recommends python3-pip
 
 # zinit
 echo "### zinit"
@@ -86,11 +86,11 @@ cd /
 
 # ripgrep
 echo "### ripgrep"
-apt install -y --no-install-recommends ripgrep
+sudo apt install -y --no-install-recommends ripgrep
 
 # bat
 echo "### bat"
-apt install -y --no-install-recommends bat
+sudo apt install -y --no-install-recommends bat
 ln -s /usr/bin/batcat ~/.local/bin/bat
 
 # delta
@@ -103,7 +103,7 @@ cd /
 # tmux
 if "${USE_TMUX}"; then
     echo "### tmux"
-    apt install -y --no-install-recommends tmux
+    sudo apt install -y --no-install-recommends tmux
     cd ~/Documents/Github
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
@@ -115,8 +115,8 @@ fi
 
 # font
 # cd ~/Downloads
-# apt install -y --no-install-recommends unzip
-# apt install -y --no-install-recommends fontconfig
+# sudo apt install -y --no-install-recommends unzip
+# sudo apt install -y --no-install-recommends fontconfig
 # wget --no-check-certificate https://github.com/adam7/delugia-code/releases/download/v2111.01.2/delugia-book.zip
 # unzip delugia-book.zip
 # cp -R delugia-book /usr/share/fonts
