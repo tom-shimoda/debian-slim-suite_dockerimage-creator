@@ -25,7 +25,7 @@ sudo apt install -y --no-install-recommends wget
 echo "### curl"
 sudo apt install -y --no-install-recommends curl
 sudo apt install -y --no-install-recommends ca-certificates
-update-ca-certificates
+sudo update-ca-certificates
 # dpkg
 echo "### dpkg"
 sudo apt install -y --no-install-recommends dpkg
@@ -36,7 +36,11 @@ sudo apt install -y --no-install-recommends git
 # dotfiles
 echo "### dotfiles"
 cd ~/Documents/Github
-git clone https://github.com/tom-shimoda/dotfiles_ubuntu
+if [ ! -e dotfiles_ubuntu ]; then
+    git clone https://github.com/tom-shimoda/dotfiles_ubuntu
+else
+    echo "dotfiles_ubuntu exists."
+fi
 cd dotfiles_ubuntu
 cp -R .config/nvim ~/.config
 cp .gitconfig ~
@@ -52,8 +56,12 @@ cd /
 # nvim
 echo "### nvim"
 cd ~/Downloads
-wget --no-check-certificate https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb
-dpkg -i nvim-linux64.deb
+if [ ! -e nvim-linux64.deb ]; then
+    wget --no-check-certificate https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb
+else
+    echo "nvim-linux64.deb is exists."
+fi
+sudo dpkg -i nvim-linux64.deb
 cd /
 
 # nvm
@@ -96,8 +104,10 @@ ln -s /usr/bin/batcat ~/.local/bin/bat
 # delta
 echo "### delta"
 cd ~/Downloads
-wget --no-check-certificate https://github.com/dandavison/delta/releases/download/0.15.1/git-delta-musl_0.15.1_amd64.deb
-dpkg -i ./git-delta-musl_0.15.1_amd64.deb
+if [ ! -e git-delta-musl_0.15.1_amd64.deb ]; then
+    wget --no-check-certificate https://github.com/dandavison/delta/releases/download/0.15.1/git-delta-musl_0.15.1_amd64.deb
+fi
+sudo dpkg -i git-delta-musl_0.15.1_amd64.deb
 cd /
 
 # tmux
@@ -105,11 +115,19 @@ if "${USE_TMUX}"; then
     echo "### tmux"
     sudo apt install -y --no-install-recommends tmux
     cd ~/Documents/Github
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    if [ ! -e ~/.tmux/plugins/tpm ]; then
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    else
+        echo "~/.tmux/plugins/tpm is exists."
+    fi
 
     # tmux-powerline
     echo "### tmux-powerline"
-    git clone https://github.com/tom-shimoda/tmux-powerline
+    if [ ! -e tmux-powerline ]; then
+        git clone https://github.com/tom-shimoda/tmux-powerline
+    else
+        echo "tmux-powerline exists."
+    fi
     cd /
 fi
 
